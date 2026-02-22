@@ -1,0 +1,122 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Lms.master.cs" Inherits="FLMWebForms1.Lms" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>LMS</title>
+
+    <style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(120deg, #eef2ff, #f8fafc, #fdf2f8);
+        background-size: 300% 300%;
+        animation: bgMove 10s ease infinite;
+    }
+
+    @keyframes bgMove {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    .header {
+        background: rgba(255,255,255,0.85);
+        backdrop-filter: blur(6px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 26px;
+        font-weight: 600;
+        color: #1f2937;
+    }
+
+    .menu-bar {
+        background: rgba(255,255,255,0.9);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+        padding: 6px 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    /* ASP.NET Menu center alignment fix */
+    .asp-menu {
+        margin: 0 auto;
+    }
+
+    .asp-menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .asp-menu li {
+        margin: 0 6px;
+    }
+
+    .asp-menu a {
+        text-decoration: none;
+        padding: 8px 14px;
+        border-radius: 8px;
+        color: #374151;
+        font-size: 14px;
+        display: inline-block;
+        transition: all 0.25s ease;
+    }
+
+    .asp-menu a:hover {
+        background: #eef2ff;
+        color: #4f46e5;
+        transform: translateY(-1px);
+    }
+
+    .content-area {
+        padding: 25px;
+    }
+</style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+<div class="header">
+        <h1>Welcome to LMS</h1>
+    </div>
+
+    <form id="form1" runat="server">
+
+        <div class="menu-bar">
+            <asp:Menu ID="Menu1" runat="server" CssClass="asp-menu"
+                Orientation="Horizontal"
+                StaticEnableDefaultPopOutImage="false"
+                Font-Names="Segoe UI"
+                Font-Size="14px">
+                <Items>
+                    <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" Value="Home"></asp:MenuItem>
+
+                    <asp:MenuItem Text="Faculty" Value="Faculty">
+                        <asp:MenuItem Text="Faculty Login" Value="Login" NavigateUrl="~/Faculty/FacultyLogin.aspx"></asp:MenuItem>
+                    </asp:MenuItem>
+
+                    <asp:MenuItem Text="Student" Value="Student">
+                        <asp:MenuItem NavigateUrl="~/Student/StudentRegistration.aspx" Text="Register" Value="Register"></asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Student/StudentLogin.aspx" Text="Login" Value="Login"></asp:MenuItem>
+                    </asp:MenuItem>
+                </Items>
+            </asp:Menu>
+        </div>
+
+        <div class="content-area">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server"></asp:ContentPlaceHolder>
+        </div>
+
+    </form>
+</body>
+</html>
